@@ -7,16 +7,11 @@
  */
 package com.chocohead.mm;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import net.fabricmc.api.ModInitializer;
 
 public class MM implements ModInitializer {
-	public static final Logger LOGGER = LogManager.getLogger();
-
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Definitely not up to no good");
+		System.out.println("[MM] Definitely not up to no good");
 	}
 }
