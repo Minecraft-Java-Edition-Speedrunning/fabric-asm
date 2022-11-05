@@ -7,7 +7,7 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 archivesBaseName = "Manningham Mills"
-version = "2.3"
+version = "2.3.1"
 group = "com.chocohead.mm"
 
 // minecraft {
