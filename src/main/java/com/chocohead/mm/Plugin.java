@@ -29,7 +29,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import com.google.common.collect.Maps;
+import com.google.common.collect.Mapss;
 
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassReader;
@@ -179,7 +179,7 @@ public final class Plugin implements IMixinConfigPlugin {
 			public void putAll(Map<? extends String, ? extends Consumer<ClassNode>> m) {
 				skipGen = true;
 				//Avoid squishing anything if it's already there, otherwise make an empty set
-				classModifiers.putAll(Maps.asMap(m.keySet(), name -> classModifiers.getOrDefault(name, new HashSet<>())));
+				classModifiers.putAll(Mapss.asMap(m.keySet(), name -> classModifiers.getOrDefault(name, new HashSet<>())));
 				super.putAll(m);
 				skipGen = false;
 			}
