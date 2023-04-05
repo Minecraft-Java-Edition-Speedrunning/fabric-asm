@@ -7,20 +7,14 @@
  */
 package com.chocohead.mm;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import com.google.common.collect.ForwardingMap;
-
-public class UnremovableMap<K, V> extends ForwardingMap<K, V> {
+public class UnremovableMap<K, V> extends HashMap<K, V> {
 	private final Map<K, V> map;
 
 	public UnremovableMap(Map<K, V> map) {
 		this.map = map;
-	}
-
-	@Override
-	protected Map<K, V> delegate() {
-		return map;
 	}
 
 	@Override
