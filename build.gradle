@@ -11,24 +11,13 @@ base {
 }
 
 repositories {
-	maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 	maven { url "https://jitpack.io" }
-}
-
-loom {
-	decompilers {
-		vineflower {
-			options.put("mark-corresponding-synthetics", "1")
-			options.put("ind", "    ")
-		}
-	}
 }
 
 dependencies {
 	minecraft libs.minecraft
-	mappings variantOf(libs.yarn.mappings) { classifier "" } // v2 for non-Jitpack mappings
+	mappings variantOf(libs.yarn.mappings) { classifier "" }
 	modImplementation libs.fabric.loader
-	vineflowerDecompilerClasspath libs.vineflower
 }
 
 processResources {
