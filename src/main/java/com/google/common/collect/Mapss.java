@@ -181,7 +181,7 @@ public class Mapss {
      *
      * <p>The returned entry is serializable.
      *
-     * @param key the key to be associated with the returned entry
+     * @param key   the key to be associated with the returned entry
      * @param value the value to be associated with the returned entry
      */
     @GwtCompatible(serializable = true)

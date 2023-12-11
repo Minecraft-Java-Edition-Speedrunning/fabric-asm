@@ -1,32 +1,23 @@
 {
-	"schemaVersion": 1,
-	"id": "mm",
-	"name": "Manningham Mills",
-	"description": "The mod to do what asie said Fabric shouldn't allow you to do",
-	"version": "${version}",
-	"icon": "assets/mm/icon.png",
-	"authors": [
-		"Chocohead"
-	],
-	"contact": {
-		"homepage": "https://github.com/Chocohead/Fabric-ASM",
-		"sources": "https://github.com/Chocohead/Fabric-ASM",
-		"issues": "https://github.com/Chocohead/Fabric-ASM/issues"
-	},
-	"license": "MPL-2.0",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"com.chocohead.mm.MM"
-		]
-	},
-	"depends": {
-		"fabricloader": ">=0.7.0"
-	},
-	"mixins": [{
-		"config": "mixins.mm.json"
-	}],
-	"custom": {
-		"modmenu:api": true
-	}
+  "schemaVersion": 1,
+  "id": "mm",
+  "name": "Manningham Mills",
+  "description": "The mod to do what asie said Fabric shouldn't allow you to do",
+  "version": "${version}",
+  "icon": "assets/mm/icon.png",
+  "authors": [
+    "Chocohead"
+  ],
+  "contact": {
+    "sources": "https://github.com/Minecraft-Java-Edition-Speedrunning/fabric-asm",
+    "issues": "https://github.com/Minecraft-Java-Edition-Speedrunning/fabric-asm/issues"
+  },
+  "license": "MPL-2.0",
+  "environment": "*",
+  "depends": {
+    "fabricloader": ">=0.7.0"
+  },
+  "mixins": [
+    "mixins.mm.json"
+  ]
 }

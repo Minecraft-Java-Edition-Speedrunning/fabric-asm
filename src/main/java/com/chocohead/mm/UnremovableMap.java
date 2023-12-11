@@ -7,32 +7,31 @@
  */
 package com.chocohead.mm;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class UnremovableMap<K, V> extends HashMap<K, V> {
-	private final Map<K, V> map;
+    private final Map<K, V> map;
 
-	public UnremovableMap(Map<K, V> map) {
-		this.map = map;
-	}
+    public UnremovableMap(Map<K, V> map) {
+        this.map = map;
+    }
 
-	@Override
-	public V put(K key, V value) {
-		if (map.containsKey(key)) {
-			throw new UnsupportedOperationException();
-		} else {
-			return map.put(key, value);
-		}
-	}
+    @Override
+    public V put(K key, V value) {
+        if (map.containsKey(key)) {
+            throw new UnsupportedOperationException();
+        } else {
+            return map.put(key, value);
+        }
+    }
 
-	@Override
-	public V remove(Object object) {
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public V remove(Object object) {
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
-	public boolean remove(Object key, Object value) {
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public boolean remove(Object key, Object value) {
+        throw new UnsupportedOperationException();
+    }
 }

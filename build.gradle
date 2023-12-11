@@ -1,66 +1,59 @@
 plugins {
-	id 'fabric-loom' version "1.0-SNAPSHOT" // To use chocoloom, change the version to a commit hash
-	id 'maven-publish'
+	alias libs.plugins.fabric.loom
+	id "maven-publish"
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+version = mod_version
+group = maven_group
 
-archivesBaseName = "Manningham Mills"
-version = "2.3.2"
-group = "com.chocohead.mm"
+base {
+	archivesName = archives_name
+}
 
-// minecraft {
-// 	refmapName = "mixins.mm.refmap.json"
-// 	// AT = file("example/resources/access-transformations.txt")
-// }
+repositories {
+	maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
+	maven { url "https://jitpack.io" }
+}
+
+loom {
+	decompilers {
+		vineflower {
+			options.put("mark-corresponding-synthetics", "1")
+			options.put("ind", "    ")
+		}
+	}
+}
 
 dependencies {
-	minecraft "com.mojang:minecraft:1.14 Pre-Release 3"
-	mappings "net.fabricmc:yarn:1.14 Pre-Release 3+build.1"
-	modImplementation "net.fabricmc:fabric-loader:0.7.0+build.171"
+	minecraft libs.minecraft
+	mappings variantOf(libs.yarn.mappings) { classifier "" } // v2 for non-Jitpack mappings
+	modImplementation libs.fabric.loader
+	vineflowerDecompilerClasspath libs.vineflower
 }
 
 processResources {
-	inputs.property "version", project.version
-
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+		expand "version": version
 	}
 }
 
-// ensure that the encoding is set to UTF-8, no matter what the system default is
-// this fixes some edge cases with special characters not displaying correctly
-// see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
 tasks.withType(JavaCompile).configureEach {
 	it.options.encoding = "UTF-8"
-	if (JavaVersion.current().isJava9Compatible()) it.options.release = 8
+	it.options.release.set(8)
 }
 
 java {
-	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-	// if it is present.
-	// If you remove this line, sources will not be generated.
-	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 jar {
-	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}" }
-	}
+	from("LICENSE")
 }
 
-// configure the maven publication
 publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-		}
+	publications.create("mavenJava", MavenPublication) {
+		from components.java
 	}
-
-	// select the repositories you want to publish to
-	repositories {
-		// uncomment to publish to the local maven
-		// mavenLocal()
-	}
+	repositories {}
 }
