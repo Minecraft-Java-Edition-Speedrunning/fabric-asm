@@ -19,5 +19,10 @@
   },
   "mixins": [
     "mixins.mm.json"
-  ]
+  ],
+  "custom": {
+    "modmenu": {
+      "badges": [ "library" ]
+    }
+  }
 }
